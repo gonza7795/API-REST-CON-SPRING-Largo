@@ -54,12 +54,18 @@ public class EstudianteController {
     
     
     
-    @PostMapping("api/estudiante")
+    @PostMapping("api/estudiantes")
     public Estudiante guardarEstudiante(@RequestBody Estudiante estudiante) {
         System.out.println("Estudiante correctamente creado");
         estudianteService.guardar(estudiante);
         return estudiante;
         
+    }
+    
+    
+    @GetMapping("api/estudiantes")
+    public List<Estudiante> obtener(){
+        return estudianteService.obtenerTodos();
     }
       
     
