@@ -4,11 +4,20 @@ package com.apirest.apirest.controller;
 import com.apirest.apirest.model.Estudiante;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EstudianteController {
+    
+    @Autowired
+    private EstudianteService estudianteService;
+    
+
     
     @GetMapping("api/estudiante")
     public List<Estudiante> obtenerEstudiantes() {
@@ -42,5 +51,16 @@ public class EstudianteController {
          return listaEstudiantes;
         
     }
+    
+    
+    
+    @PostMapping("api/estudiante")
+    public Estudiante guardarEstudiante(@RequestBody Estudiante estudiante) {
+        System.out.println("Estudiante correctamente creado");
+        estudianteService.guardar(estudiante);
+        return estudiante;
+        
+    }
+      
     
 }
